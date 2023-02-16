@@ -1,9 +1,8 @@
 
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace Dale.Services.EntFileForATM.API
+namespace OutlookCalendar.API
 {
     public class Program
     {

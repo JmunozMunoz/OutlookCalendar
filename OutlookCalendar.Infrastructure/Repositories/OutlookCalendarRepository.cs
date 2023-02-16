@@ -2,24 +2,18 @@
 using OutlookCalendar.Domain.Core.Models;
 using OutlookCalendar.Domain.Core.Repositories;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using Nancy;
-using Microsoft.Extensions.Logging;
-using Dale.Services.EntFileForATM.Infraestructure.Extensions.Configuration;
 
 namespace OutlookCalendar.Infaestructure.Repositories
 {
     public class OutlookCalendarRepository : IOutlookCalendarRequestRepository
     {
-        private readonly OutlookCalendarConfiguration _config;
+        private readonly IOutlookCalendarConfiguration _config;
 
         private const string UrlBase = "https://graph.microsoft.com/v1.0/";
-        public OutlookCalendarRepository(OutlookCalendarConfiguration config) {
+        public OutlookCalendarRepository(IOutlookCalendarConfiguration config) {
             _config = config;
         }
 
@@ -196,10 +190,6 @@ namespace OutlookCalendar.Infaestructure.Repositories
             json.EmitCompact = false;
 
             return json;
-            //Debug.WriteLine(json.Emit());
-            // Save the JSON to a file for future requests.
-            //Chilkat.FileAccess fac = new Chilkat.FileAccess();
-            //fac.WriteEntireTextFile("qa_data/tokens/outlookCalendar.json", json.Emit(), "utf-8", false);
         }
 
         public async Task<ReceivedCalendarsData> GetOutlookCalendars()

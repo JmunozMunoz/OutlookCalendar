@@ -1,13 +1,11 @@
-﻿using Dale.Services.EntFileForATM.Infraestructure.Extensions.Configuration;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using OutlookCalendar.Domain.Core.Repositories;
 using OutlookCalendar.Infaestructure.Repositories;
-using System.Configuration;
 
-namespace Dale.Services.EntFileForATM.API.Extensions
+namespace OutlookCalendar.API.Extensions
 {
     public static class ConfigurationServices
     {
@@ -53,7 +51,6 @@ namespace Dale.Services.EntFileForATM.API.Extensions
         public static IServiceCollection AddTransients(this IServiceCollection services)
         {
             services.AddTransient<IOutlookCalendarRequestRepository, OutlookCalendarRepository>();
-            services.AddTransient<IConfigurationSectionHandler, OutlookCalendarConfiguration>();
         
             return services;
         }

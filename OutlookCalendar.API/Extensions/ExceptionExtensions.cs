@@ -5,7 +5,7 @@ using OutlookCalendar.Domain.Core.Responses;
 using System;
 using System.Net;
 
-namespace Dale.Services.EntFileForATM.API.Extensions
+namespace OutlookCalendar.API.Extensions
 {
     public static class ExceptionExtensions
     {

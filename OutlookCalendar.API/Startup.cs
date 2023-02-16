@@ -1,4 +1,3 @@
-using Dale.Services.EntFileForATM.API.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,11 +5,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OutlookCalendar.API.Configuration;
+using OutlookCalendar.API.Extensions;
 using OutlookCalendar.Application.OutlookCalendar.Handlers;
-using System;
+using OutlookCalendar.Domain.Core.Repositories;
 using System.Reflection;
 
-namespace Dale.Services.EntFileForATM.API
+namespace OutlookCalendar.API
 {
     public class Startup
     {
@@ -39,7 +40,9 @@ namespace Dale.Services.EntFileForATM.API
             //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             //services.AddConfigureServiceLogger();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
+            services.AddSingleton<IOutlookCalendarConfiguration, OutlookCalendarConfiguration>();
+            services.BuildServiceProvider().GetService<IOutlookCalendarConfiguration>();
 
             services.AddHttpContextAccessor();
 
